@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Welcome to your project
 
 ## Project info
@@ -68,4 +68,4 @@ Deploy using your preferred platform and follow its publish/share workflow.
 Yes. To connect a custom domain, follow your hosting provider's instructions for adding a domain and updating DNS records. Check your deployment platform's documentation for details.
 =======
 # StudySync
->>>>>>> 29c75e8a8324bf2aede837857c231f68e1a4b062
+
