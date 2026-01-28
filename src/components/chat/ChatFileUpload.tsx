@@ -62,9 +62,10 @@ export function ChatFileUpload({ userId, groupId, onFileUploaded, disabled }: Ch
       setPreview({ url: urlData.publicUrl, name: file.name, type: fileType });
       onFileUploaded(urlData.publicUrl, file.name, fileType);
 
-    } catch (error: any) {
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
       console.error('Upload error:', error);
-      toast({ variant: 'destructive', title: 'Upload failed', description: error.message });
+      toast({ variant: 'destructive', title: 'Upload failed', description: message });
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';

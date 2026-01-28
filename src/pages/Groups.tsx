@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { format, parseISO } from 'date-fns';
 import { Users, Plus, Copy, LogOut, Send, Crown, Trash2, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -69,8 +69,8 @@ export default function Groups() {
   } = useMessageReactions(selectedGroupId, user?.id);
 
   const selectedGroup = groups.find(g => g.id === selectedGroupId);
-  const groupMessages = selectedGroupId ? messages[selectedGroupId] || [] : [];
-  const leaderboard = selectedGroupId ? getLeaderboard(selectedGroupId) : [];
+  const groupMessages = useMemo(() => (selectedGroupId ? messages[selectedGroupId] || [] : []), [selectedGroupId, messages]);
+  const leaderboard = useMemo(() => (selectedGroupId ? getLeaderboard(selectedGroupId) : []), [selectedGroupId, getLeaderboard]);
 
   // Fetch reactions when messages change
   useEffect(() => {

@@ -14,13 +14,10 @@ const getAllowedOrigins = (): string[] => {
 };
 
 const getCorsHeaders = (origin: string | null): Record<string, string> => {
-  const allowedOrigins = getAllowedOrigins();
-  const isAllowed = origin && allowedOrigins.some(allowed => origin === allowed);
-  
   return {
-    'Access-Control-Allow-Origin': isAllowed ? origin! : allowedOrigins[0],
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
   };
 };
 
@@ -50,7 +47,7 @@ Deno.serve(async (req) => {
   
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response('ok', { headers: corsHeaders });
   }
 
   // Only allow POST requests

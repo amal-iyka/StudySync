@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Shuffle } from 'lucide-react';
 
+/* eslint-disable react-refresh/only-export-components */
+
 export interface AvatarConfig {
   faceShape: 'round' | 'oval' | 'square';
   skinTone: string;
